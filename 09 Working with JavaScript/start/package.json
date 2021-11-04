@@ -1,0 +1,12 @@
+{
+  "name": "01-beginninng-tsc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon \"./dist/index.js\" --watch"
+  },
+  "author": "",
+  "license": "ISC"
+}
