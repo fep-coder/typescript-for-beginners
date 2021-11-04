@@ -2,13 +2,13 @@ let myVar;
 console.log(`${typeof myVar}`);
 
 myVar = 10;
-console.log(`${typeof myVar}`); 
+console.log(`${typeof myVar}`);
 
 myVar = "Hello";
-console.log(`${typeof myVar}`); 
+console.log(`${typeof myVar}`);
 
 myVar = true;
-console.log(`${typeof myVar}`); 
+console.log(`${typeof myVar}`);
 
 function multiply(amount) {
     return amount * 2;
@@ -45,3 +45,16 @@ function multiplyAny(amount: any): any {
 console.log(multiplyAny(10));
 console.log(multiplyAny("Hello"));
 console.log(multiplyAny(true));
+
+function stringOrNumber(
+    v: string | number,
+    isString: boolean
+): string | number {
+    return isString ? "string": v;
+}
+
+let stringVariable: string | number = stringOrNumber("Hello", true);
+let numberVariable: string | number = stringOrNumber(4, false);
+
+console.log(stringVariable);
+console.log(numberVariable);

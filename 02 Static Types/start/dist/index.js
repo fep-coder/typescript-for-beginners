@@ -32,3 +32,10 @@ function multiplyAny(amount) {
 console.log(multiplyAny(10));
 console.log(multiplyAny("Hello"));
 console.log(multiplyAny(true));
+function stringOrNumber(v, isString) {
+    return isString ? "string" : v;
+}
+let stringVariable = stringOrNumber("Hello", true);
+let numberVariable = stringOrNumber(4, false);
+console.log(stringVariable);
+console.log(numberVariable);
