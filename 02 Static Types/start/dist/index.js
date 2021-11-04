@@ -26,3 +26,9 @@ let number2 = 200;
 // number2 = "hello";
 let multiplyNumber2 = multiplyTyped(number2);
 console.log(multiplyNumber2);
+function multiplyAny(amount) {
+    return amount * 2;
+}
+console.log(multiplyAny(10));
+console.log(multiplyAny("Hello"));
+console.log(multiplyAny(true));
