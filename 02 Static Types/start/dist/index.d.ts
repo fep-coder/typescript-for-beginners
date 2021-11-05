@@ -9,3 +9,4 @@ declare function multiplyAny(amount: any): any;
 declare function stringOrNumber(v: string | number, isString: boolean): string | number;
 declare let stringVariable: string | number;
 declare let numberVariable: string | number;
+declare let booleanVariable: boolean;

@@ -50,7 +50,7 @@ function stringOrNumber(
     v: string | number,
     isString: boolean
 ): string | number {
-    return isString ? "string": v;
+    return isString ? "string" : v;
 }
 
 let stringVariable: string | number = stringOrNumber("Hello", true);
@@ -58,3 +58,14 @@ let numberVariable: string | number = stringOrNumber(4, false);
 
 console.log(stringVariable);
 console.log(numberVariable);
+
+stringVariable = stringOrNumber("Hello", true) as string;
+numberVariable = stringOrNumber(4, false) as number;
+
+console.log(stringVariable);
+console.log(numberVariable);
+
+// let booleanVariable = stringOrNumber(4, false) as boolean;
+
+let booleanVariable = stringOrNumber(4, false) as any as boolean;
+console.log(booleanVariable);
