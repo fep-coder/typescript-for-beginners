@@ -46,3 +46,10 @@ console.log(numberVariable);
 // let booleanVariable = stringOrNumber(4, false) as boolean;
 let booleanVariable = stringOrNumber(4, false);
 console.log(booleanVariable);
+let stringVariable2 = stringOrNumber("Hello", true);
+if (typeof stringVariable2 === "number") {
+    console.log("Number");
+}
+else if (typeof stringVariable2 === "string") {
+    console.log("String");
+}

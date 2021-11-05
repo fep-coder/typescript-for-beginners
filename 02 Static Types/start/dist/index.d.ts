@@ -10,3 +10,4 @@ declare function stringOrNumber(v: string | number, isString: boolean): string |
 declare let stringVariable: string | number;
 declare let numberVariable: string | number;
 declare let booleanVariable: boolean;
+declare let stringVariable2: string | number;
