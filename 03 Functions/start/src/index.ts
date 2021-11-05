@@ -32,3 +32,13 @@ console.log(def);
 function a(b): number {
     if (b != null) return b;
 }
+
+function typedFunction(a: number, b: number): number {
+    // return "hello";
+    return a + b;
+}
+
+function voidFunction(s: string): void {
+    console.log(s);
+}
+voidFunction("Hello");

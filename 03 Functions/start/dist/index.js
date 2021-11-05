@@ -26,3 +26,11 @@ function a(b) {
     if (b != null)
         return b;
 }
+function typedFunction(a, b) {
+    // return "hello";
+    return a + b;
+}
+function voidFunction(s) {
+    console.log(s);
+}
+voidFunction("Hello");
