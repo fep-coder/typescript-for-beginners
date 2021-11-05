@@ -11,3 +11,8 @@ declare let stringVariable: string | number;
 declare let numberVariable: string | number;
 declare let booleanVariable: boolean;
 declare let stringVariable2: string | number;
+declare function error(message: string): never;
+declare function fail(): never;
+declare function infiniteLoop(): never;
+declare function someFunc(value: any): string | number;
+declare let value: string | number;

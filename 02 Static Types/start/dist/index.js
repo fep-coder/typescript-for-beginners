@@ -53,3 +53,31 @@ if (typeof stringVariable2 === "number") {
 else if (typeof stringVariable2 === "string") {
     console.log("String");
 }
+function error(message) {
+    throw new Error(message);
+}
+function fail() {
+    return error("Something failed");
+}
+function infiniteLoop() {
+    while (true) { }
+}
+function someFunc(value) {
+    return value;
+}
+let value = someFunc([1, 2, 3]);
+switch (typeof value) {
+    case "number":
+        console.log("Number");
+        break;
+    case "string":
+        console.log("String");
+        break;
+    default:
+        let result = value;
+        console.log(`Unexpected type for value: ${result}`);
+        let result2 = value;
+        // let array: [] = result2;
+        let array = result2;
+        console.log(array);
+}
