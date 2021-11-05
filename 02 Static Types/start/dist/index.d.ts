@@ -16,3 +16,4 @@ declare function fail(): never;
 declare function infiniteLoop(): never;
 declare function someFunc(value: any): string | number;
 declare let value: string | number;
+declare let test: string;

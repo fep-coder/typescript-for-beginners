@@ -111,3 +111,7 @@ switch (typeof value) {
         let array: [] = result2 as [];
         console.log(array);
 }
+
+let test: string = "hello";
+test = null; 
+test = undefined; 

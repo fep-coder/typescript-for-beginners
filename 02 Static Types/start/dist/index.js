@@ -81,3 +81,6 @@ switch (typeof value) {
         let array = result2;
         console.log(array);
 }
+let test = "hello";
+test = null;
+test = undefined;

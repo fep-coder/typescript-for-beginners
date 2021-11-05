@@ -5,6 +5,7 @@
         "rootDir": "./src",
         "module": "commonjs",
         "declaration": true,
-        // "noImplicitAny": true
+        // "noImplicitAny": true,
+        "strictNullChecks": true
     }
 }
