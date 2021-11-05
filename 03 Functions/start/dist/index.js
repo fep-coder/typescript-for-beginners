@@ -34,3 +34,16 @@ function voidFunction(s) {
     console.log(s);
 }
 voidFunction("Hello");
+function writeValue(value) {
+    console.log(`Value: ${value}`);
+}
+function addFive(value) {
+    if (value != null) {
+        return value + 5;
+    }
+    return null;
+}
+let addFiveResult = addFive(100);
+// if (typeof addFiveResult === "number") {
+writeValue(addFiveResult);
+// }

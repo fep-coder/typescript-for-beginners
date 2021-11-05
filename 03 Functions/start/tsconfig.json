@@ -4,6 +4,7 @@
         "outDir": "./dist",
         "rootDir": "./src",
         "module": "commonjs",
-        "noImplicitReturns": true
+        "noImplicitReturns": true,
+        "strictNullChecks": true
     }
 }

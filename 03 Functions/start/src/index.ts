@@ -42,3 +42,21 @@ function voidFunction(s: string): void {
     console.log(s);
 }
 voidFunction("Hello");
+
+function writeValue(value: number): void {
+    console.log(`Value: ${value}`);
+}
+
+function addFive(value: number): number;
+function addFive(value: null): null;
+function addFive(value: number | null): number | null {
+    if (value != null) {
+        return value + 5;
+    }
+    return null;
+}
+
+let addFiveResult: number | null = addFive(100);
+// if (typeof addFiveResult === "number") {
+    writeValue(addFiveResult);
+// }
