@@ -28,3 +28,7 @@ function defaultValues(a, b = 5) {
 }
 let def = defaultValues(1);
 console.log(def);
+
+function a(b): number {
+    if (b != null) return b;
+}
