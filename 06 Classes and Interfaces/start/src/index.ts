@@ -1,18 +1,22 @@
 class Person {
+    constructor(public readonly id: number, public name: string) {}
+}
 
-    constructor(public readonly id: number,
+class Employee extends Person {
+    constructor(
+        public readonly id: number,
         public name: string,
         public job: string,
-        private salary: number) {
-
-    }
-
-    printPerson(): void {
-        console.log(
-            `${this.name} is a ${this.job} and has a salary of ${this.salary}`
-        );
+        private salary: number
+    ) {
+        super(id, name);
     }
 }
 
-const person = new Person(1, "John", "programmer", 5000);
-person.printPerson();
+const people = [new Person(1, "John"), new Employee(2, "Bob", "builder", 4000)];
+people.forEach((item) => {
+    console.log(`Person: ${item.name}`);
+    if (item instanceof Employee) {
+        console.log(`Person: ${item.name} is a ${item.job}`);
+    }
+});
