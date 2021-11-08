@@ -48,3 +48,12 @@ enum FruitStrings {
     Bananas = "Bananas",
 }
 console.log(FruitStrings.Apples);
+
+let restrictedValue: 1 | 2 | 3 = 3;
+console.log(restrictedValue);
+
+function fruits(quantity: 1 | 2, fruit: string): string {
+    return `I have ${quantity} ${fruit}`;
+}
+let f = fruits(2, "apples");
+console.log(f);

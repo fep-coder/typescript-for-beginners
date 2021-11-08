@@ -44,3 +44,10 @@ var FruitStrings;
     FruitStrings["Bananas"] = "Bananas";
 })(FruitStrings || (FruitStrings = {}));
 console.log(FruitStrings.Apples);
+let restrictedValue = 3;
+console.log(restrictedValue);
+function fruits(quantity, fruit) {
+    return `I have ${quantity} ${fruit}`;
+}
+let f = fruits(2, "apples");
+console.log(f);
