@@ -1,5 +1,4 @@
 class Person {
-    // public uninitProperty: string;
     constructor(id, name, job, salary) {
         this.id = id;
         this.name = name;
@@ -12,5 +11,3 @@ class Person {
 }
 const person = new Person(1, "John", "programmer", 5000);
 person.printPerson();
-// console.log(person.salary); 
-// person.id = 4;
