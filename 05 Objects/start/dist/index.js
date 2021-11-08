@@ -18,3 +18,7 @@ let shapeTypeUnion = [
 ];
 shapeTypeUnion.forEach((item) => console.log(item.name));
 // shapeTypeUnion.forEach((item) => console.log(item.age));
+let typeIntersection = [
+    { name: "bananas", price: 2, age: 33 },
+];
+typeIntersection.forEach((item) => console.log(item.age));

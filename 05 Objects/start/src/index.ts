@@ -33,3 +33,9 @@ let shapeTypeUnion: (Product | Person)[] = [
 
 shapeTypeUnion.forEach((item) => console.log(item.name));
 // shapeTypeUnion.forEach((item) => console.log(item.age));
+
+let typeIntersection: (Product & Person)[] = [
+    { name: "bananas", price: 2, age: 33 },
+];
+
+typeIntersection.forEach((item) => console.log(item.age));
