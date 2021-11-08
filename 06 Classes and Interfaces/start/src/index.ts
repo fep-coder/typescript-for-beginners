@@ -1,8 +1,10 @@
 class Person {
-    public id: number;
+    public readonly id: number;
     public name: string;
     public job: string;
     private salary: number;
+
+    // public uninitProperty: string;
 
     constructor(id: number, name: string, job: string, salary: number) {
         this.id = id;
@@ -20,4 +22,6 @@ class Person {
 
 const person = new Person(1, "John", "programmer", 5000);
 person.printPerson();
-// console.log(person.salary);
+// console.log(person.salary); 
+
+// person.id = 4;
