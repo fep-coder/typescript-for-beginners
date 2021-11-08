@@ -57,3 +57,14 @@ function fruits(quantity: 1 | 2, fruit: string): string {
 }
 let f = fruits(2, "apples");
 console.log(f);
+
+type comboType = [string, number | true, 1 | 2 | 3][];
+function getValue(input: comboType): comboType {
+    return [
+        ["Apples", 100, 2],
+        ["Oranges", true, 3],
+    ]
+}
+
+let result: comboType = getValue([["a", 1, 1]]);
+console.log(result);

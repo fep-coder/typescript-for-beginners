@@ -51,3 +51,11 @@ function fruits(quantity, fruit) {
 }
 let f = fruits(2, "apples");
 console.log(f);
+function getValue(input) {
+    return [
+        ["Apples", 100, 2],
+        ["Oranges", true, 3],
+    ];
+}
+let result = getValue([["a", 1, 1]]);
+console.log(result);
