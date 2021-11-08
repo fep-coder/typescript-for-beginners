@@ -8,3 +8,13 @@ let products2 = [
     { name: "apples", price: 1 },
     { name: "oranges" },
 ];
+let products3 = [
+    { name: "apples", price: 1 },
+    { name: "oranges", price: 2 },
+];
+let shapeTypeUnion = [
+    { name: "apples", age: 23 },
+    { name: "bananas", price: 2, age: 33 },
+];
+shapeTypeUnion.forEach((item) => console.log(item.name));
+// shapeTypeUnion.forEach((item) => console.log(item.age));
