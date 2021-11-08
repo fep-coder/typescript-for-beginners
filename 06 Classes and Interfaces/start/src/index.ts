@@ -1,22 +1,44 @@
-class Person {
+abstract class Person {
     constructor(public readonly id: number, public name: string) {}
+
+    getDetails(): string {
+        return `${this.name} ${this.getSpecificDetails()}`;
+    }
+
+    abstract getSpecificDetails(): string;
 }
 
-class Employee extends Person {
+class Worker1 extends Person {
+    constructor(
+        public readonly id: number,
+        public name: string,
+        public job: string
+    ) {
+        super(id, name);
+    }
+
+    getSpecificDetails(): string {
+        return `is a ${this.job}`;
+    }
+}
+
+let worker1 = new Worker1(1, "Bob", "builder");
+console.log(worker1.getDetails());
+
+class Worker2 extends Person {
     constructor(
         public readonly id: number,
         public name: string,
         public job: string,
-        private salary: number
+        public vehicle: string
     ) {
         super(id, name);
     }
+
+    getSpecificDetails(): string {
+        return `is a ${this.job} and drives a ${this.vehicle}`;
+    }
 }
 
-const people = [new Person(1, "John"), new Employee(2, "Bob", "builder", 4000)];
-people.forEach((item) => {
-    console.log(`Person: ${item.name}`);
-    if (item instanceof Employee) {
-        console.log(`Person: ${item.name} is a ${item.job}`);
-    }
-});
+let worker2 = new Worker2(1, "Jack", "driver", "truck");
+console.log(worker2.getDetails());
