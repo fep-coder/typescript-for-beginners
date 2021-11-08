@@ -1,36 +1,20 @@
-class Person {
-    constructor(id, name) {
-        this.id = id;
+class Cat {
+    constructor(name, speech) {
         this.name = name;
+        this.speech = speech;
     }
     getDetails() {
-        return `${this.name} ${this.getSpecificDetails()}`;
+        return `${this.name} ${this.speech}`;
     }
 }
-class Worker1 extends Person {
-    constructor(id, name, job) {
-        super(id, name);
-        this.id = id;
+class Dog {
+    constructor(name, speech) {
         this.name = name;
-        this.job = job;
+        this.speech = speech;
     }
-    getSpecificDetails() {
-        return `is a ${this.job}`;
-    }
-}
-let worker1 = new Worker1(1, "Bob", "builder");
-console.log(worker1.getDetails());
-class Worker2 extends Person {
-    constructor(id, name, job, vehicle) {
-        super(id, name);
-        this.id = id;
-        this.name = name;
-        this.job = job;
-        this.vehicle = vehicle;
-    }
-    getSpecificDetails() {
-        return `is a ${this.job} and drives a ${this.vehicle}`;
+    getDetails() {
+        return `${this.name} ${this.speech}`;
     }
 }
-let worker2 = new Worker2(1, "Jack", "driver", "truck");
-console.log(worker2.getDetails());
+let animals = [new Cat("Oska", "meows"), new Dog("Loki", "barks")];
+animals.forEach((animal) => console.log(animal.getDetails()));

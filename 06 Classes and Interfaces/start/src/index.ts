@@ -1,44 +1,24 @@
-abstract class Person {
-    constructor(public readonly id: number, public name: string) {}
+interface Animal {
+    name: string;
+    getDetails(): string;
+}
+
+class Cat implements Animal {
+    constructor(public name: string, public speech: string) {}
 
     getDetails(): string {
-        return `${this.name} ${this.getSpecificDetails()}`;
-    }
-
-    abstract getSpecificDetails(): string;
-}
-
-class Worker1 extends Person {
-    constructor(
-        public readonly id: number,
-        public name: string,
-        public job: string
-    ) {
-        super(id, name);
-    }
-
-    getSpecificDetails(): string {
-        return `is a ${this.job}`;
+        return `${this.name} ${this.speech}`;
     }
 }
 
-let worker1 = new Worker1(1, "Bob", "builder");
-console.log(worker1.getDetails());
+class Dog implements Animal {
+    constructor(public name: string, public speech: string) {}
 
-class Worker2 extends Person {
-    constructor(
-        public readonly id: number,
-        public name: string,
-        public job: string,
-        public vehicle: string
-    ) {
-        super(id, name);
-    }
-
-    getSpecificDetails(): string {
-        return `is a ${this.job} and drives a ${this.vehicle}`;
+    getDetails(): string {
+        return `${this.name} ${this.speech}`;
     }
 }
 
-let worker2 = new Worker2(1, "Jack", "driver", "truck");
-console.log(worker2.getDetails());
+let animals: Animal[] = [new Cat("Oska", "meows"), new Dog("Loki", "barks")];
+
+animals.forEach((animal) => console.log(animal.getDetails()));
