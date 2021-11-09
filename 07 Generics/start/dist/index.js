@@ -2,11 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const dataTypes_1 = require("./dataTypes");
 let people = [new dataTypes_1.Person("Bob", 32), new dataTypes_1.Person("John", 42)];
-// let products = [new Product("White shirt", 3), new Product("Black shirt", 5)];
+let products = [new dataTypes_1.Product("White shirt", 3), new dataTypes_1.Product("Black shirt", 5)];
 // [...people, ...products].forEach((item) => console.log(`Item: ${item.name}`));
-// type dataType = Person | Product;
-class PeopleCollection {
-    // private items: dataType[] = [];
+class DataCollection {
     constructor(initialItems) {
         this.items = [];
         this.items.push(...initialItems);
@@ -14,14 +12,18 @@ class PeopleCollection {
     add(newItem) {
         this.items.push(newItem);
     }
-    getNames() {
-        return this.items.map((item) => item.name);
-    }
+    // getNames(): string[] {
+    //     return this.items.map((item) => item.name);
+    // }
     getItem(index) {
         return this.items[index];
     }
 }
-let peopleData = new PeopleCollection(people);
-console.log(`Names: ${peopleData.getNames().join(", ")}`);
+let peopleData = new DataCollection(people);
+// console.log(`Names: ${peopleData.getNames().join(", ")}`);
 let firstPerson = peopleData.getItem(0);
 console.log(`First person: ${firstPerson.name}, ${firstPerson.age}`);
+let productData = new DataCollection(products);
+// console.log(`Names: ${peopleData.getNames().join(", ")}`);
+let firstProduct = productData.getItem(0);
+console.log(`First product: ${firstProduct.name}, ${firstProduct.price}`);
