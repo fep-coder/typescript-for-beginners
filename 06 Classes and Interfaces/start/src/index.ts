@@ -1,11 +1,14 @@
 interface Animal {
+// type Animal = {
     name: string;
     getDetails(): string;
 }
 
 interface WildAnimal extends Animal {
     kind: string;
+    food?: string;
     getMoreDetails(): string;
+    getFoodDetails?(): string;
 }
 
 class Cat implements Animal {
