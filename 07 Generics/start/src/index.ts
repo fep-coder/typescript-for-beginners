@@ -1,36 +1,35 @@
-import { Person, Product } from "./dataTypes";
+import { Animal, AnimalGuardian } from "./dataTypes";
 
-let people = [new Person("Bob", 32), new Person("John", 42)];
-let products = [new Product("White shirt", 3), new Product("Black shirt", 5)];
-// [...people, ...products].forEach((item) => console.log(`Item: ${item.name}`));
+let guardians = [
+    new AnimalGuardian("Bob", "builder"),
+    new AnimalGuardian("John", "programmer"),
+];
+let animals = [
+    new Animal("Oska", "cat", "Bob"),
+    new Animal("Loki", "dog", "John"),
+];
 
-// class DataCollection<T extends Person | Product> {
-class DataCollection<T extends { name: string }> {
+class DataCollection<T extends { name: string }, U> {
     private items: T[] = [];
 
     constructor(initialItems: T[]) {
         this.items.push(...initialItems);
     }
 
-    add(newItem: T) {
-        this.items.push(newItem);
-    }
-
-    getNames(): string[] {
-        return this.items.map((item) => item.name);
-    }
-
-    getItem(index: number): T {
-        return this.items[index];
+    collate(targetData: U[], itemProp: string, targetProp: string): (T & U)[] {
+        let results = [];
+        this.items.forEach((item) => {
+            let match = targetData.find(
+                (d) => d[targetProp] === item[itemProp]
+            );
+            if (match !== undefined) {
+                results.push({ ...match, ...item });
+            }
+        });
+        return results;
     }
 }
 
-let peopleData = new DataCollection<Person>(people);
-console.log(`Names: ${peopleData.getNames().join(", ")}`);
-let firstPerson = peopleData.getItem(0);
-console.log(`First person: ${firstPerson.name}, ${firstPerson.age}`);
-
-let productData = new DataCollection<Product>(products);
-console.log(`Product Names: ${productData.getNames().join(", ")}`);
-let firstProduct = productData.getItem(0);
-console.log(`First product: ${firstProduct.name}, ${firstProduct.price}`);
+let guardiansData = new DataCollection<AnimalGuardian, Animal>(guardians);
+let collatedData = guardiansData.collate(animals, "name", "guardianName");
+collatedData.forEach(g => console.log(`${g.name} the ${g.job} has a ${g.kind}`));

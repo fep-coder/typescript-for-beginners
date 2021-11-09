@@ -7,9 +7,13 @@ export class Product {
 }
 
 export class Animal {
-    constructor(public name: string, public kind: string) {}
+    constructor(
+        public name: string,
+        public kind: string,
+        public guardianName: string
+    ) {}
 }
 
-export class Worker {
+export class AnimalGuardian {
     constructor(public name: string, public job: string) {}
 }
