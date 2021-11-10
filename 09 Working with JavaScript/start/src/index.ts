@@ -12,4 +12,5 @@ cart.addProduct(oranges, 2);
 // console.log(`Cart has ${cart.itemCount} items`);
 // console.log(`Cart value is $${cart.totalPrice.toFixed(2)}`);
 sizeFormatter("Cart", cart.itemCount);
-costFormatter("Cart", cart.totalPrice);
+// costFormatter("Cart", cart.totalPrice);
+costFormatter("Cart", `${cart.totalPrice}`);

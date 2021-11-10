@@ -6,6 +6,11 @@ function sizeFormatter(thing, count) {
     writeMessage(`The ${thing} has ${count} items`);
 }
 exports.sizeFormatter = sizeFormatter;
+/**
+ *
+ * @param {string} thing
+ * @param {number} cost
+ */
 function costFormatter(thing, cost) {
     writeMessage(`The ${thing} costs $${cost.toFixed(2)}`, true);
 }
