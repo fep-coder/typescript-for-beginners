@@ -4,13 +4,14 @@ const Product_1 = require("./Product");
 let products = [new Product_1.Product("White shirt", 3), new Product_1.Product("Black shirt", 5)];
 class Collection {
     constructor(initialItems = []) {
-        this.items = new Set(initialItems);
+        this.items = new Map();
+        this.add(...initialItems);
     }
     add(...newItems) {
-        newItems.forEach((newItem) => this.items.add(newItem));
+        newItems.forEach((newItem) => this.items.set(newItem.name, newItem));
     }
     get(name) {
-        return [...this.items.values()].find((item) => item.name === name);
+        return this.items.get(name);
     }
     get count() {
         return this.items.size;
