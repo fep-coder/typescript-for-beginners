@@ -4,32 +4,29 @@ let guardians = [
     new AnimalGuardian("Bob", "builder"),
     new AnimalGuardian("John", "programmer"),
 ];
-let animals = [
-    new Animal("Oska", "cat", "Bob"),
-    new Animal("Loki", "dog", "John"),
-];
 
 class DataCollection<T extends { name: string }> {
-    private items: T[] = [];
+    protected items: T[] = [];
 
     constructor(initialItems: T[]) {
         this.items.push(...initialItems);
     }
+}
 
-    collate<U>(targetData: U[], itemProp: string, targetProp: string): (T & U)[] {
-        let results = [];
-        this.items.forEach((item) => {
-            let match = targetData.find(
-                (d) => d[targetProp] === item[itemProp]
-            );
-            if (match !== undefined) {
-                results.push({ ...match, ...item });
-            }
-        });
-        return results;
+class SearchableCollection<
+    T extends { name: string }
+> extends DataCollection<T> {
+    constructor(initialItems: T[]) {
+        super(initialItems);
+    }
+
+    find(name: string): T | undefined {
+        return this.items.find(item => item.name === name);
     }
 }
 
-let guardiansData = new DataCollection<AnimalGuardian>(guardians);
-let collatedData = guardiansData.collate(animals, "name", "guardianName");
-collatedData.forEach(g => console.log(`${g.name} the ${g.job} has a ${g.kind}`));
+let guardiansData = new SearchableCollection<AnimalGuardian>(guardians);
+let foundGuardian = guardiansData.find("Bob");
+if (foundGuardian !== undefined) {
+    console.log(`Guardian: ${foundGuardian.name}`);
+}
