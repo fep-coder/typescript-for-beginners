@@ -2,34 +2,24 @@ import { Product } from "./Product";
 
 let products = [new Product("White shirt", 3), new Product("Black shirt", 5)];
 
-class Collection<T extends { name: string }> implements Iterable<T> {
-    private items: Map<string, T>;
+class Collection<T extends { name: string }> {
+    private items: T[] = [];
 
-    constructor(initialItems: T[] = []) {
-        this.items = new Map<string, T>();
-        this.add(...initialItems);
+    constructor(initialItems: T[]) {
+        this.items.push(...initialItems);
     }
 
-    add(...newItems: T[]): void {
-        newItems.forEach((newItem) => this.items.set(newItem.name, newItem));
+    add(newItem: T) {
+        this.items.push(newItem);
     }
 
-    get(name: string): T {
-        return this.items.get(name);
+    find(name: string): T {
+        return this.items.find((item) => item.name === name);
     }
 
-    get count(): number {
-        return this.items.size;
-    }
-
-    [Symbol.iterator](): Iterator<T> {
-        return this.items.values();
+    getItem(index: number): T {
+        return this.items[index];
     }
 }
 
 let productCollection: Collection<Product> = new Collection(products);
-console.log(`There are ${productCollection.count} products.`);
-
-[...productCollection].forEach((p) =>
-    console.log(`Product: ${p.name}, ${p.price}`)
-);
