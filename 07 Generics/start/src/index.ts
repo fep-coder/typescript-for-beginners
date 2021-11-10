@@ -1,4 +1,4 @@
-import { Person, Product } from "./dataTypes";
+import { Person } from "./dataTypes";
 
 type shapeType = { name: string };
 
@@ -8,14 +8,20 @@ interface Collection<T extends shapeType> {
     count: number;
 }
 
-interface SearchableCollection<T extends shapeType> extends Collection<T> {
-    find(name: string): T | undefined;
+class ArrayCollection<T extends shapeType> implements Collection<T> {
+    private items: T[] = [];
+
+    add(...newItems: T[]): void {
+        this.items.push(...newItems);
+    }
+    get(name: string): T {
+        return this.items.find((item) => item.name === name);
+    }
+    get count(): number {
+        return this.items.length;
+    }
 }
 
-interface ProductCollection extends Collection<Product> {
-    sumPrices(): number;
-}
-
-interface PeopleCollection<T extends Person | Product> extends Collection<T> {
-    getNames(): string[];
-}
+let peopleCollection: Collection<Person> = new ArrayCollection<Person>();
+peopleCollection.add(new Person("Bob", 30), new Person("John", 40));
+console.log(`Collection size: ${peopleCollection.count}`);
