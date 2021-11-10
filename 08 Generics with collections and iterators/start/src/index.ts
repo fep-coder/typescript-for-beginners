@@ -2,7 +2,7 @@ import { Product } from "./Product";
 
 let products = [new Product("White shirt", 3), new Product("Black shirt", 5)];
 
-class Collection<T extends { name: string }> {
+class Collection<T extends { name: string }> implements Iterable<T> {
     private items: Map<string, T>;
 
     constructor(initialItems: T[] = []) {
@@ -22,7 +22,7 @@ class Collection<T extends { name: string }> {
         return this.items.size;
     }
 
-    values(): IterableIterator<T> {
+    [Symbol.iterator](): Iterator<T> {
         return this.items.values();
     }
 }
@@ -30,8 +30,6 @@ class Collection<T extends { name: string }> {
 let productCollection: Collection<Product> = new Collection(products);
 console.log(`There are ${productCollection.count} products.`);
 
-[...productCollection.values()].forEach((p) =>
-    console.log(
-        `Product: ${p.name}, ${p.price}`
-    )
+[...productCollection].forEach((p) =>
+    console.log(`Product: ${p.name}, ${p.price}`)
 );
