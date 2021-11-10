@@ -21,10 +21,18 @@ class Collection<T extends { name: string }> {
     get count(): number {
         return this.items.size;
     }
+
+    values(): Iterator<T> {
+        return this.items.values();
+    }
 }
 
 let productCollection: Collection<Product> = new Collection(products);
 console.log(`There are ${productCollection.count} products.`);
 
-let p = productCollection.get("White shirt");
-console.log(`Product: ${p.name}, ${p.price}`);
+let iterator: Iterator<Product> = productCollection.values();
+let iteratorResult: IteratorResult<Product> = iterator.next();
+while (!iteratorResult.done) {
+    console.log(`Product: ${iteratorResult.value.name}, ${iteratorResult.value.price}`);
+    iteratorResult = iterator.next();
+}
