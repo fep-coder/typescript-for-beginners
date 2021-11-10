@@ -1,8 +1,9 @@
-import { Animal, AnimalGuardian } from "./dataTypes";
+import { Animal } from "./dataTypes";
 
-let guardians = [
-    new AnimalGuardian("Bob", "builder"),
-    new AnimalGuardian("John", "programmer"),
+let animals = [
+    new Animal("Oska", "cat", "Bob"),
+    new Animal("Lea", "cat", "Bob"),
+    new Animal("Loki", "dog", "John"),
 ];
 
 class DataCollection<T extends { name: string }> {
@@ -13,20 +14,17 @@ class DataCollection<T extends { name: string }> {
     }
 }
 
-class SearchableCollection<
-    T extends { name: string }
-> extends DataCollection<T> {
-    constructor(initialItems: T[]) {
+class SearchableCollection extends DataCollection<Animal> {
+    constructor(initialItems: Animal[]) {
         super(initialItems);
     }
 
-    find(name: string): T | undefined {
-        return this.items.find(item => item.name === name);
+    find(kind: string): Animal[] {
+        return this.items.filter((item) => item.kind === kind);
     }
 }
 
-let guardiansData = new SearchableCollection<AnimalGuardian>(guardians);
-let foundGuardian = guardiansData.find("Bob");
-if (foundGuardian !== undefined) {
-    console.log(`Guardian: ${foundGuardian.name}`);
-}
+let animalsFound = new SearchableCollection(animals);
+animalsFound
+    .find("cat")
+    .forEach((a) => console.log(`${a.name} is a ${a.kind}`));
