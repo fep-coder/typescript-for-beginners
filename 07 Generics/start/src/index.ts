@@ -8,13 +8,13 @@ interface Collection<T extends shapeType> {
     count: number;
 }
 
-class ArrayCollection<T extends shapeType> implements Collection<T> {
-    private items: T[] = [];
+class PersonCollection implements Collection<Person> {
+    private items: Person[] = [];
 
-    add(...newItems: T[]): void {
+    add(...newItems: Person[]): void {
         this.items.push(...newItems);
     }
-    get(name: string): T {
+    get(name: string): Person {
         return this.items.find((item) => item.name === name);
     }
     get count(): number {
@@ -22,6 +22,6 @@ class ArrayCollection<T extends shapeType> implements Collection<T> {
     }
 }
 
-let peopleCollection: Collection<Person> = new ArrayCollection<Person>();
+let peopleCollection: Collection<Person> = new PersonCollection();
 peopleCollection.add(new Person("Bob", 30), new Person("John", 40));
 console.log(`Collection size: ${peopleCollection.count}`);
