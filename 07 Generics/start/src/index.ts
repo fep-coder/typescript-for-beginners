@@ -9,14 +9,14 @@ let animals = [
     new Animal("Loki", "dog", "John"),
 ];
 
-class DataCollection<T extends { name: string }, U> {
+class DataCollection<T extends { name: string }> {
     private items: T[] = [];
 
     constructor(initialItems: T[]) {
         this.items.push(...initialItems);
     }
 
-    collate(targetData: U[], itemProp: string, targetProp: string): (T & U)[] {
+    collate<U>(targetData: U[], itemProp: string, targetProp: string): (T & U)[] {
         let results = [];
         this.items.forEach((item) => {
             let match = targetData.find(
@@ -30,6 +30,6 @@ class DataCollection<T extends { name: string }, U> {
     }
 }
 
-let guardiansData = new DataCollection<AnimalGuardian, Animal>(guardians);
+let guardiansData = new DataCollection<AnimalGuardian>(guardians);
 let collatedData = guardiansData.collate(animals, "name", "guardianName");
 collatedData.forEach(g => console.log(`${g.name} the ${g.job} has a ${g.kind}`));
