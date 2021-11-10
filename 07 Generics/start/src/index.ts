@@ -1,38 +1,21 @@
-import { Animal, AnimalGuardian } from "./dataTypes";
+import { Person, Product } from "./dataTypes";
 
-let guardians = [
-    new AnimalGuardian("Bob", "builder"),
-    new AnimalGuardian("John", "programmer"),
-];
+type shapeType = { name: string };
 
-let animals = [
-    new Animal("Oska", "cat", "Bob"),
-    new Animal("Lea", "cat", "Bob"),
-    new Animal("Loki", "dog", "John"),
-];
-
-class DataCollection<T extends { name: string }> {
-    protected items: T[] = [];
-
-    constructor(initialItems: T[]) {
-        this.items.push(...initialItems);
-    }
+interface Collection<T extends shapeType> {
+    add(...newItems: T[]): void;
+    get(name: string): T;
+    count: number;
 }
 
-class SearchableCollection<
-    T extends Animal | AnimalGuardian
-> extends DataCollection<T> {
-    constructor(initialItems: T[]) {
-        super(initialItems);
-    }
-
-    find(name: string): T[] {
-        return this.items.filter((item) => item.name === name);
-    }
+interface SearchableCollection<T extends shapeType> extends Collection<T> {
+    find(name: string): T | undefined;
 }
 
-let guardiansFound = new SearchableCollection<AnimalGuardian>(guardians);
-guardiansFound.find("Bob").forEach((a) => console.log(`${a.job}`));
+interface ProductCollection extends Collection<Product> {
+    sumPrices(): number;
+}
 
-let animalsFound = new SearchableCollection<Animal>(animals);
-animalsFound.find("Oska").forEach((a) => console.log(`${a.kind}`));
+interface PeopleCollection<T extends Person | Product> extends Collection<T> {
+    getNames(): string[];
+}
