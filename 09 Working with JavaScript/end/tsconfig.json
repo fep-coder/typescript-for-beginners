@@ -3,6 +3,9 @@
         "target": "es2018",
         "outDir": "./dist",
         "rootDir": "./src",
-        "module": "commonjs"
+        "module": "commonjs",
+        "allowJs": true,
+        "checkJs": true,
+        "declaration": true
     }
 }
